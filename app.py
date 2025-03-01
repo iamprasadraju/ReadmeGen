@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, Response, jsonify
 import google.generativeai as genai
+import os
 
 app = Flask(__name__)
 
@@ -55,5 +56,5 @@ def generate_readme():
         return Response(f"Error: {str(e)}", status=500)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 10000))  # Render assigns this dynamically
+    port = int(os.environ.get('PORT', 10000))  # Render dynamically assigns a port
     app.run(host='0.0.0.0', port=port)

@@ -1,0 +1,355 @@
+/* Define Light Mode variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #374151;
+  --border-color: #e5e7eb;
+  --box-bg: #ffffff;
+  --button-bg: #2563eb;
+  --button-hover: #1d4ed8; /* Darker blue for hover state */
+  --button-text: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --icon-color: #2563eb;
+}
+
+/* Dark Mode variables when body.dark is applied */
+body.dark {
+  --bg-color: #1f2937;       /* Gray-800 */
+  --text-color: #d1d5db;     /* Gray-300 */
+  --border-color: #374151;
+  --box-bg: #111827;
+  --button-bg: #3b82f6;
+  --button-hover: #60a5fa;   /* Lighter blue for hover in dark mode */
+  --button-text: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --icon-color: #60a5fa;
+  --icon-filter: brightness(0.8) invert(0.8);
+}
+
+/* Base styles with smooth transitions */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container styling */
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Updated Header Styling */
+.header {
+  display: flex;
+  align-items: center;
+  padding-top: 2.5rem;
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Logo container styling */
+.logo {
+  margin-right: 1rem;
+}
+
+/* Optional Tagline styling */
+.tagline {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* Theme Toggle Icon Button (Upper Right Corner) */
+.theme-toggle {
+  position: fixed;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 1000;
+  color: var(--icon-color);
+}
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+/* API key section styling - more compact */
+.api-key-section {
+  background-color: var(--box-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+.api-key-section label {
+  margin-right: 0.5rem;
+  font-weight: 500;
+}
+.api-key-section input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--box-bg);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+.api-key-section button {
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* Two-column grid layout with improved responsiveness */
+.grid-two-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  flex: 1;
+  min-height: 500px; /* Increased minimum height */
+}
+
+/* Input and Preview section styling with fixed overflow */
+.input-section,
+.preview-section {
+  background-color: var(--box-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  height: auto;
+  min-height: 300px;
+  overflow: hidden;
+}
+.input-section h2,
+.preview-section h2 {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+.input-section textarea {
+  flex: 1;
+  width: 100%;
+  min-height: 250px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: var(--box-bg);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  resize: vertical;
+}
+
+.preview-section .markdown-preview {
+  flex: 1;
+  width: 100%;
+  min-height: 250px;
+  max-height: calc(100vh - 300px);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: var(--box-bg);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  overflow-y: auto;
+  word-wrap: break-word;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Button styling - improved for all screen sizes */
+.btn {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn:hover {
+  background-color: var(--button-hover);
+}
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+/* Markdown preview typography - responsive sizing */
+.markdown-preview h1 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 0.75rem; }
+.markdown-preview h2 { font-size: clamp(1.25rem, 3vw, 1.75rem); margin-bottom: 0.75rem; margin-top: 1.5rem; }
+.markdown-preview h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); margin-bottom: 0.75rem; margin-top: 1.25rem; }
+.markdown-preview h4 { font-size: clamp(1rem, 2vw, 1.25rem); margin-bottom: 0.75rem; margin-top: 1rem; }
+.markdown-preview p { margin-bottom: 1rem; }
+.markdown-preview code {
+  background-color: var(--border-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.markdown-preview pre {
+  margin: 0.75rem 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+.markdown-preview pre code {
+  display: block;
+  padding: 0;
+  border-radius: 0;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  background-color: transparent;
+}
+.markdown-preview ul, .markdown-preview ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.markdown-preview li {
+  margin-bottom: 0.5rem;
+}
+
+/* Custom scrollbar for better visibility */
+.markdown-preview::-webkit-scrollbar {
+  width: 8px;
+}
+.markdown-preview::-webkit-scrollbar-track {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+.markdown-preview::-webkit-scrollbar-thumb {
+  background: var(--text-color);
+  border-radius: 4px;
+}
+
+/* Placeholder styling */
+::placeholder {
+  color: var(--border-color);
+  opacity: 0.7;
+}
+
+/* Footer styling with theme variables */
+.footer {
+  padding: 20px;
+  background-color: var(--box-bg);
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+  filter: var(--icon-filter, none);
+}
+
+.social-links a:hover .social-icon {
+  transform: translateY(-3px);
+}
+
+/* Adjust main content area for better mobile view */
+@media (max-width: 640px) {
+  .container {
+    padding: 0.75rem;
+  }
+  .header {
+    padding-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .api-key-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .api-key-section input {
+    width: 100%;
+  }
+  .grid-two-columns {
+    grid-template-columns: 1fr;
+  }
+  .input-section, 
+  .preview-section {
+    padding: 0.75rem;
+    min-height: 250px;
+  }
+  .input-section textarea, 
+  .preview-section .markdown-preview {
+    min-height: 200px;
+    padding: 0.75rem;
+  }
+  .btn {
+    width: 100%;
+  }
+  .button-group {
+    flex-direction: column;
+  }
+}
+
+/* Medium screens adjustment */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    padding: 1rem;
+  }
+  .input-section, 
+  .preview-section {
+    min-height: 300px;
+  }
+}
+
+/* Make top elements more visible */
+.top-controls {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: var(--bg-color);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+/* Utility: hidden class */
+.hidden {
+  display: none !important;
+}
